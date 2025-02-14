@@ -43,9 +43,8 @@ pipeline {
         
          stage('Kubernetes Edit Files') {
              steps {
-                    sh "sed -i 's|image:.*|image: ${ECR_REPOSITORY_URI}/headway:vote-${BUILD_NUMBER}|g' ./k8s/vote-deployment.yaml"
-                    sh "sed -i 's|image:.*|image: ${ECR_REPOSITORY_URI}/headway:worker-${BUILD_NUMBER}|g' ./k8s/worker-deployment.yaml"
-                    sh "sed -i 's|image:.*|image: ${ECR_REPOSITORY_URI}/headway:result-${BUILD_NUMBER}|g' ./k8s/result-deployment.yaml"
+                    sh "sed -i 's|image:.*|image: ${ECR_REPOSITORY_URI}/headway:vote-${BUILD_NUMBER}|g' ./k8s/back.yaml"
+                    sh "sed -i 's|image:.*|image: ${ECR_REPOSITORY_URI}/headway:worker-${BUILD_NUMBER}|g' ./k8s/front.yaml"
                       sh "aws eks update-kubeconfig --region ca-central-1 --name master-eks "
              }
         }
