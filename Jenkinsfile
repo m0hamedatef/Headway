@@ -45,7 +45,7 @@ pipeline {
              steps {
                     sh "sed -i 's|image:.*|image: ${ECR_REPOSITORY_URI}/headway:vote-${BUILD_NUMBER}|g' ./k8s/back.yaml"
                     sh "sed -i 's|image:.*|image: ${ECR_REPOSITORY_URI}/headway:worker-${BUILD_NUMBER}|g' ./k8s/front.yaml"
-                      sh "aws eks update-kubeconfig --region ca-central-1 --name master-eks "
+                      sh "aws eks update-kubeconfig --region us-east-1 --name my_cluster "
              }
         }
 
