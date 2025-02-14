@@ -6,7 +6,7 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('access-key')
         AWS_SECRET_ACCESS_KEY = credentials('secret-key')
         ECR_REPOSITORY_URI= '396608774504.dkr.ecr.us-east-1.amazonaws.com'
-        AWS_REGION = 'ca-central-1'
+        AWS_REGION = 'us-east-1'
     }
 
 
