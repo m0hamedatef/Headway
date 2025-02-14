@@ -27,25 +27,19 @@ pipeline {
          stage('Build Docker Image vote') {
              steps {
                
-                 sh 'docker build -t ${ECR_REPOSITORY_URI}/graduation:vote-${BUILD_NUMBER} ./app/vote/.'
+                 sh 'docker build -t ${ECR_REPOSITORY_URI}/graduation:vote-${BUILD_NUMBER} ./app/backend/.'
                  sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPOSITORY_URI}'
                  sh 'docker push ${ECR_REPOSITORY_URI}/graduation:vote-${BUILD_NUMBER}'
              }
          }
          stage('Build Docker Image worker') {
              steps {
-                 sh 'docker build -t ${ECR_REPOSITORY_URI}/graduation:worker-${BUILD_NUMBER} ./app/worker/.'
+                 sh 'docker build -t ${ECR_REPOSITORY_URI}/graduation:worker-${BUILD_NUMBER} ./app/frontend/.'
                  sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPOSITORY_URI}'
                  sh 'docker push ${ECR_REPOSITORY_URI}/graduation:worker-${BUILD_NUMBER}'
              }
          }
-         stage('Build Docker Image result') {
-             steps {
-                 sh 'docker build -t ${ECR_REPOSITORY_URI}/graduation:result-${BUILD_NUMBER} ./app/result/.'
-                 sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPOSITORY_URI}'
-                 sh 'docker push ${ECR_REPOSITORY_URI}/graduation:result-${BUILD_NUMBER}'
-             }
-         }
+    
         
          stage('Kubernetes Edit Files') {
              steps {
