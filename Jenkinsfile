@@ -53,7 +53,7 @@ pipeline {
         stage('apply manifest') {
             steps {
 
-                 sh 'kubectl create -f ./k8s/ --validate=false'
+                 sh 'kubectl create -f ./k8s/back.yaml --validate=false'
                  // sh 'kubectl apply -f ./k8s/secret.yaml '  
                  // sh 'kubectl apply -f ./k8s/configmap.yaml '
                  // sh 'kubectl apply -f ./k8s/postgress_serves.yaml '
