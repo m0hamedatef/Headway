@@ -1,4 +1,4 @@
-# NTI DevOps Final Project
+# Headway Project
 
 ![Project Architecture](./Animation.gif)
 
